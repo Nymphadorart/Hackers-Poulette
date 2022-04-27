@@ -1,0 +1,16 @@
+@font-face {
+  font-family: Bellota;
+  src: url(../font/Bellota-Regular.otf);
+}
+
+body {
+  font-family: "Bellota";
+}
+
+.logo-hp {
+  width: 200px;
+  display: block;
+  margin: auto;
+  align-items: center;
+}
+/*# sourceMappingURL=style.css.map */
