@@ -19,9 +19,6 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
             <link rel="stylesheet" href="assets\css\style.css">
-            <!--<link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Bellota&display=swap" rel="stylesheet">-->
             
             <title>Contact Form</title>
         </head>
@@ -34,7 +31,7 @@
         </div>
         </header>
 
-        <div class="logo-hp"><img src="assets/img/hackers-poulette-logo.png" alt="logo github"></div>
+        <div class="logo-hp"><img src="assets/img/hackers-poulette-logo.png" alt="logo hackers poulette"></div>
 
         <form method = "post" action="#">
             <div class="field">
@@ -44,9 +41,9 @@
                     <span class="icon is-small is-left">
                         <i class="fas fa-user"><img src="assets/img/user.png" alt="user"></i>
                     </span>
-                    <span class="icon is-small is-right">
+                    <!--<span class="icon is-small is-right">
                         <i class="fas fa-check"><img src="assets/img/checkmark.png" alt="check"></i>
-                    </span>
+                    </span>-->
                 </div>
             </div>
 
@@ -57,11 +54,11 @@
                     <span class="icon is-small is-left">
                         <i class="fas fa-user"><img src="assets/img/user.png" alt=""></i>
                     </span>
-                    <span class="icon is-small is-right">
+                    <!--<span class="icon is-small is-right">
                         <i class="fas fa-check"><img src="assets/img/checkmark.png" alt=""></i>
-                    </span>
+                    </span>-->
                 </div>
-                <!--<p class="help is-success">This username is available</p>-->
+                <!--<p class="help is-success">This Lastname is available</p>-->
             </div>
 
             <div class="field">
@@ -80,16 +77,17 @@
             <div class="field">
                 <label class="label">Email</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-danger" type="email" name="Email" placeholder="Enter your email" required aria-required=true aria-label="Enter your email">
+                    <input class="input is-danger" type="email" name="Email" placeholder="Enter your email" required aria-required=true aria-label="Enter your email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                     <!--<input class="input is-success" type="text" placeholder="Enter your email" >-->
                     <span class="icon is-small is-left">
                         <i class="fas fa-envelope"><img src="assets/img/email.png" alt=""></i>
                     </span>
-                    <span class="icon is-small is-right">
+                    <!--<span class="icon is-small is-right">
+                        <i class="fas fa-check"><img src="assets/img/checkmark.png" alt=""></i>
                         <i class="warning"><img src="assets/img/warning.png" alt=""></i>
-                    </span>
+                    </span>-->
                 </div>
-                <p class="help is-danger">This email is invalid</p>
+                <!--<p class="help is-danger">This email is invalid</p>-->
                 <!--<p class="help is-success">This username is available</p>-->
             </div>
 
@@ -100,9 +98,9 @@
                     <span class="icon is-small is-left">
                         <i class="country"><img src="assets/img/country.png" alt=""></i>
                     </span>
-                    <span class="icon is-small is-right">
+                    <!--<span class="icon is-small is-right">
                         <i class="fas fa-check"><img src="assets/img/checkmark.png" alt=""></i>
-                    </span>
+                    </span>-->
                 </div>
             </div>
 
@@ -149,27 +147,38 @@
         
             $Data -> execute([
                 'Firstname' => $Firstname,
-                'Lastname' => $Lastname,
-                'Gender' => $Gender,
-                'Email' => $Email,
-                'Country' => $Country,
-                'Subject' => $Subject,
-                'Message' => $Message,
+                'Lastname'  => $Lastname,
+                'Gender'    => $Gender,
+                'Email'     => $Email,
+                'Country'   => $Country,
+                'Subject'   => $Subject,
+                'Message'   => $Message,
             ]) or die(print_r($bdd->errorInfo()));
 
             header('Location : /hackers-poulette/index.php');
         ?>
 
+        <?php 
+            $options = array(
+                'First_name' 	=> FILTER_SANITIZE_STRING,
+                'Last_Name' 	=> FILTER_SANITIZE_STRING,
+                'Email' 		=> FILTER_SANITIZE_EMAIL,
+                'Country' 		=> FILTER_SANITIZE_STRING,
+                'Message' 		=> FILTER_SANITIZE_STRING
+            );
+            
+        ?>
+
         <footer class="footer" style='background-color: #0D8187'>
 
-            <div class="content has-text-centered" >
+            <div class="content has-text-centered" > 
                 <div class="logo-github">
                     <a href="https://github.com/Nymphadorart/Hackers-Poulette" target="_blank">
                         <img src="assets/img/github.png" alt="logo github" aria-required=true aria-label="Github page">
                     </a>
                 </div>
                 <p class="pfoot">
-                    Formulaire créer par Anaïs Bossouw
+                    Formulaire créer par Anaïs Bossouw 
                 </p>
             </div>
         </footer>
